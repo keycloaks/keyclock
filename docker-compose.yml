@@ -15,6 +15,7 @@ services:
         MYSQL_PASSWORD: password
   keycloak:
       image: jboss/keycloak
+      command: -Dkeycloak.profile.feature.docker="true" -b "0.0.0.0"
       environment: 
         MYSQL_ADDR: mysql
         MYSQL_DATABASE: keycloak
@@ -22,6 +23,7 @@ services:
         MYSQL_PASSWORD: password
         KEYCLOAK_USER: admin
         KEYCLOAK_PASSWORD: Pa55w0rd
+        PROXY_ADDRESS_FORWARDING: "true"
       ports:
         - 8080:8080
       depends_on:
